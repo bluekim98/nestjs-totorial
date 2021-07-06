@@ -6,11 +6,13 @@ import { PlaceService } from './place/place.service';
 import { PlaceModule } from './place/place.module';
 import { TeamModule } from './team/team.module';
 import { UsersModule } from './users/users.module';
+import { LayoutService } from './layout/layout.service';
+import { LayoutModule } from './layout/layout.module';
 
 
 @Module({
-  imports: [PlaceModule, TeamModule, UsersModule],
+  imports: [PlaceModule, TeamModule, UsersModule, LayoutModule],
   controllers: [UsersController],
-  providers: [UsersService, TeamService, PlaceService],
+  providers: [UsersService, TeamService, PlaceService, LayoutService],
 })
 export class AppModule {}

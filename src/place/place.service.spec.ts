@@ -4,6 +4,7 @@ import { PlaceService } from './place.service';
 
 describe('PlaceService', () => {
   let service: PlaceService;
+  
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -19,8 +20,8 @@ describe('PlaceService', () => {
 
   it('should be return 전략실', () => {
     const data = {
-      roomId: 2,
-      locationId: 1
+      roomId: '2',
+      locationId: '1-1'
     }
     let createdPlace: Place;
     createdPlace = service.createPlaceEntity(data);

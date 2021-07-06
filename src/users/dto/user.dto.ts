@@ -4,7 +4,7 @@ export class CreateUserDto {
     nickname: string;
     job: string;
     teamId: number;
-    roomId: number;
-    locationId: number;
+    roomId: string;
+    locationId: string;
     isActivate: boolean;
 }

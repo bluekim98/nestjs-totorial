@@ -1,5 +1,5 @@
 export interface Place {
-    roomId: number;
+    roomId: string;
     roomName: string;
-    locationId: number;
+    locationId: string;
 }
