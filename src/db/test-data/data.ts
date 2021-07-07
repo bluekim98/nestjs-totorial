@@ -2,33 +2,56 @@ module.exports = {
     users: [
         {
             email: 'blue@email.com',
-            name: '김종형',
+            name: '빈지노',
             nickname: 'blue',
             job: 'developer',
-            teamId: 2,
-            roomId: '1',
-            locationId: '1-1',
             isActivate: true
         },
         {
             email: 'yellow@email.com',
             name: '백예린',
-            nickname: 'blue',
-            job: 'developer',
-            teamId: 1,
-            roomId: '1',
-            locationId: '1-2',
+            nickname: 'yellow',
+            job: 'manager',
             isActivate: true
         },
         {
             email: 'red@email.com',
             name: '아이유',
-            nickname: 'blue',
-            job: 'developer',
-            teamId: 1,
-            roomId: '1',
-            locationId: '1-3',
+            nickname: 'red',
+            job: 'manager',
             isActivate: true
+        }
+    ],
+    rooms: [
+        {
+            id: '1',
+            title: 'headquarter',
+            locations: [],
+            isUsing: true   
+        },
+        {
+            id: '2',
+            title: 'research center',
+            locations: [],
+            isUsing: true
+        }
+    ],
+    layouts: [
+        {
+            id: 1,
+            rooms: []
+        }
+    ],
+    teams: [
+        {
+            id: 1,
+            name: 'business',
+            users: []
+        },
+        {
+            id: 2,
+            name: 'development',
+            users: []
         }
     ]
 }

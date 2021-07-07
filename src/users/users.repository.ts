@@ -17,4 +17,18 @@ export class UsersRepository {
     findAll(): User[] {
         return this.users;
     }
+
+    findByEmail(email: string): User {
+        const filteredUsers: User[] = this.users.filter(user => user.email === email);
+        return filteredUsers[0];
+    }
+
+    add(user: User) {
+        if(!user || !user.email) return;
+        
+        const filteredUsers: User[] = this.users.filter(existingUser => existingUser.email === user.email);
+        if(filteredUsers.length != 0) return;
+        
+        this.users.push(user);
+    }
 }

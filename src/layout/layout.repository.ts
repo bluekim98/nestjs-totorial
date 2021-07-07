@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Layout } from "./interface/layout.interface";
 import { Room } from "./interface/room.interface";
+const data = require('../db/test-data/data');
 
 @Injectable()
 export class LayoutRepository {
@@ -11,24 +12,11 @@ export class LayoutRepository {
     }
 
     private init(): void {
-        let headRoom: Room = {
-            id: '1',
-            locations: [],
-            isUsing: true
-        };
-        let strategyRoom: Room = {
-            id: '2',
-            locations: [],
-            isUsing: true
-        };
-
-        this.layout = {
-            id: 1,
-            rooms: []
+        this.layout = data.layouts[0];
+        
+        for(let room of data.rooms) {
+            this.layout.rooms.push(room);
         }
-
-        this.layout.rooms.push(headRoom);
-        this.layout.rooms.push(strategyRoom);
     }
 
     find(): Layout {

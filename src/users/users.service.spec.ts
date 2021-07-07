@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { setupMaster } from 'cluster';
-import { PlaceService } from '../place/place.service';
-import { TeamService } from '../team/team.service';
+import { TeamModule } from '../team/team.module';
 import { CreateUserDto } from './dto/user.dto';
 import { User } from './interface/user.interface';
+import { UsersRepository } from './users.repository';
 import { UsersService } from './users.service';
 
 describe('UsersService', () => {
@@ -12,21 +12,20 @@ describe('UsersService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UsersService, TeamService, PlaceService],
+      providers: [UsersService, UsersRepository],
+      imports: [TeamModule]
     }).compile();
 
     service = module.get<UsersService>(UsersService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
     createUserDto = {
-      email: 'blue@email.com',
+      email: 'black@email.com',
       name: '김종형',
-      nickname: 'blue',
+      nickname: 'black',
       job: 'developer',
       teamId: 2,
-      roomId: '1',
-      locationId: '1-1',
       isActivate: true
     }
   });
@@ -35,24 +34,12 @@ describe('UsersService', () => {
     expect(service).toBeDefined();
   });
 
-  it('create user entity', () => {
-    let user: User;
-    user = service.createUserEntity(createUserDto);
-    expect(user.team.name).toBe('developer');
-    expect(user.place.roomName).toBe('본부');
-  });
-
-  it('should be have length zero', () => {
-    let users: User[];
-    users = service.findAll();
-    expect(users).toHaveLength(0);
-  });
-  
-  it('should be have length 1', () => {
+  it('should be increased by one', () => {
+    const countBeforCreate: number = service.findAll().length;
     service.create(createUserDto);
     let users: User[];
     users = service.findAll();
-    expect(users).toHaveLength(1);
+    expect(users).toHaveLength(countBeforCreate + 1);
   });
 
   it('input and output must match', () => {
